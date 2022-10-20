@@ -12,7 +12,7 @@ const DetailPage = () => {
   const { data } = useGetSearchNewsQuery({ keyword: id, singel: true });
 
   const newsData = data && data.value[0];
-  const image = newsData && newsData.image.thumbnail.contentUrl;
+  const image = newsData?.image && newsData.image.thumbnail.contentUrl;
   const title = newsData && newsData.name;
   const date = newsData && newsData.datePublished;
   const description = newsData && newsData.description;
