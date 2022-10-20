@@ -6,17 +6,16 @@ import {
   Typography,
 } from "@mui/material";
 import {
-  useGetTopNewsQuery,
   useGetSearchNewsQuery,
 } from "../../services/newsApi";
+import imgPlaceholder from "../../assets/images/img-placeholder.jpeg";
 import timeSince from "../../utils/timeSince";
 
 const HotTopicsSection = () => {
-  const { data: keyword, isLoading } = useGetTopNewsQuery();
-  const { data } = useGetSearchNewsQuery(
-    { keyword, trending: true },
-    { skip: isLoading }
-  );
+  const { data } = useGetSearchNewsQuery({
+    keyword: "top stories",
+    singel: true,
+  });
 
   const hotNewsData = data && data.value[0];
   const image = hotNewsData && hotNewsData.image.thumbnail.contentUrl;
@@ -35,12 +34,16 @@ const HotTopicsSection = () => {
       <Grid item xs={9}>
         <ImageListItem>
           <img
-            src={image || <Skeleton />}
+            src={image || imgPlaceholder}
             style={{ width: "100%", height: "400px", borderRadius: "8px" }}
             alt={title}
             loading="lazy"
           />
-          <ImageListItemBar sx={{borderRadius:"0 0 8px 8px"}} title={title} subtitle={timeSince(date)} />
+          <ImageListItemBar
+            sx={{ borderRadius: "0 0 8px 8px" }}
+            title={title}
+            subtitle={timeSince(date)}
+          />
         </ImageListItem>
       </Grid>
 

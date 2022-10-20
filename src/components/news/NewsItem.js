@@ -6,14 +6,20 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import imgPlaceholder from "../../assets/images/img-placeholder.jpeg";
 import timeSince from "../../utils/timeSince";
 
 const NewsItem = (props) => {
+  const navigate = useNavigate();
   const { image, title, date, publisher } = props;
 
+  const handleClick = () => {
+    navigate(`/${title}`);
+  };
+
   return (
-    <Card sx={{ maxWidth: 270, height: "100%" }}>
+    <Card sx={{ maxWidth: 270, height: "100%" }} onClick={handleClick}>
       <CardActionArea sx={{ height: "100%" }}>
         <CardMedia
           component="img"
