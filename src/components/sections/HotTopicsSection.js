@@ -5,13 +5,13 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import {
-  useGetSearchNewsQuery,
-} from "../../services/newsApi";
+import { useGetSearchNewsQuery } from "../../services/newsApi";
 import imgPlaceholder from "../../assets/images/img-placeholder.jpeg";
 import timeSince from "../../utils/timeSince";
+import { useNavigate } from "react-router-dom";
 
 const HotTopicsSection = () => {
+  const navigate = useNavigate();
   const { data } = useGetSearchNewsQuery({
     keyword: "top stories",
     singel: true,
@@ -22,6 +22,10 @@ const HotTopicsSection = () => {
   const title = hotNewsData && hotNewsData.name;
   const date = hotNewsData && hotNewsData.datePublished;
   const description = hotNewsData && hotNewsData.description;
+
+  const handlerClick = () => {
+    navigate(`/${title}`);
+  };
 
   return (
     <Grid
@@ -43,6 +47,7 @@ const HotTopicsSection = () => {
             sx={{ borderRadius: "0 0 8px 8px" }}
             title={title}
             subtitle={timeSince(date)}
+            onClick={handlerClick}
           />
         </ImageListItem>
       </Grid>
