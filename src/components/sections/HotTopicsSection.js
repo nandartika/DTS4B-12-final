@@ -9,6 +9,7 @@ import {
   useGetTopNewsQuery,
   useGetSearchNewsQuery,
 } from "../../services/newsApi";
+import timeSince from "../../utils/timeSince";
 
 const HotTopicsSection = () => {
   const { data: keyword, isLoading } = useGetTopNewsQuery();
@@ -35,11 +36,11 @@ const HotTopicsSection = () => {
         <ImageListItem>
           <img
             src={image || <Skeleton />}
-            style={{ width: "100%", height: "400px" }}
+            style={{ width: "100%", height: "400px", borderRadius: "8px" }}
             alt={title}
             loading="lazy"
           />
-          <ImageListItemBar title={title} subtitle={date} />
+          <ImageListItemBar sx={{borderRadius:"0 0 8px 8px"}} title={title} subtitle={timeSince(date)} />
         </ImageListItem>
       </Grid>
 
