@@ -6,7 +6,7 @@ const NewsList = (props) => {
     <Grid
       container
       direction="row"
-      justifyContent="flex-start"
+      justifyContent="space-between"
       alignItems="stretch"
       spacing={2}
     >
@@ -16,7 +16,7 @@ const NewsList = (props) => {
             image={item.image && item.image.thumbnail.contentUrl}
             title={item.name}
             date={item.datePublished}
-            author={item.provider.name}
+            publisher={item.provider[0].name}
           />
         </Grid>
       ))}

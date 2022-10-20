@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Layout from "../components/layouts/Layout";
 import NewsList from "../components/news/NewsList";
 import HotTopicsSection from "../components/sections/HotTopicsSection";
@@ -9,17 +9,29 @@ const MainPage = () => {
 
   return (
     <Layout>
-      <Typography variant="h3" gutterBottom>
-        Hot Topics
-      </Typography>
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-between"
+        alignItems="stretch"
+        spacing={5}
+      >
+        <Grid item>
+          <Typography variant="h4" gutterBottom>
+            Hot Topics
+          </Typography>
 
-      <HotTopicsSection />
+          <HotTopicsSection />
+        </Grid>
 
-      <Typography variant="h4" gutterBottom>
-        Latest News
-      </Typography>
+        <Grid item>
+          <Typography variant="h5" gutterBottom>
+            Latest News
+          </Typography>
 
-      {data && <NewsList data={data.value} />}
+          {data && <NewsList data={data.value} />}
+        </Grid>
+      </Grid>
     </Layout>
   );
 };

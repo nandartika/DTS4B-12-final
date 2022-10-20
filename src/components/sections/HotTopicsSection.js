@@ -5,23 +5,27 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import {
-  useGetTopNewsQuery,
-  useGetSearchNewsQuery,
-} from "../../services/newsApi";
+import { useGetSearchNewsQuery } from "../../services/newsApi";
+import imgPlaceholder from "../../assets/images/img-placeholder.jpeg";
+import timeSince from "../../utils/timeSince";
+import { useNavigate } from "react-router-dom";
 
 const HotTopicsSection = () => {
-  const { data: keyword, isLoading } = useGetTopNewsQuery();
-  const { data } = useGetSearchNewsQuery(
-    { keyword, trending: true },
-    { skip: isLoading }
-  );
+  const navigate = useNavigate();
+  const { data } = useGetSearchNewsQuery({
+    keyword: "top stories",
+    singel: true,
+  });
 
   const hotNewsData = data && data.value[0];
   const image = hotNewsData && hotNewsData.image.thumbnail.contentUrl;
   const title = hotNewsData && hotNewsData.name;
   const date = hotNewsData && hotNewsData.datePublished;
   const description = hotNewsData && hotNewsData.description;
+
+  const handlerClick = () => {
+    navigate(`/${title}`);
+  };
 
   return (
     <Grid
@@ -34,12 +38,17 @@ const HotTopicsSection = () => {
       <Grid item xs={9}>
         <ImageListItem>
           <img
-            src={image || <Skeleton />}
-            style={{ width: "100%", height: "400px" }}
+            src={image || imgPlaceholder}
+            style={{ width: "100%", height: "400px", borderRadius: "8px" }}
             alt={title}
             loading="lazy"
           />
-          <ImageListItemBar title={title} subtitle={date} />
+          <ImageListItemBar
+            sx={{ borderRadius: "0 0 8px 8px" }}
+            title={title}
+            subtitle={timeSince(date)}
+            onClick={handlerClick}
+          />
         </ImageListItem>
       </Grid>
 

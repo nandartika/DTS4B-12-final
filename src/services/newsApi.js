@@ -43,12 +43,12 @@ export const newsApi = createApi({
       }),
     }),
     getSearchNews: builder.query({
-      query: ({keyword, trending = false}) => ({
+      query: ({ keyword, singel = false }) => ({
         url: "search",
         params: {
           q: keyword,
-          count: trending ? 1 : 50,
-          freshness: "Month",
+          count: singel ? 1 : 50,
+          freshness: "Day",
           textFormat: "Raw",
           safeSearch: "Off",
         },
