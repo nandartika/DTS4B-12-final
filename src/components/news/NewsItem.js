@@ -26,6 +26,7 @@ const NewsItem = (props) => {
           height="178"
           image={image || imgPlaceholder}
           alt={title}
+          sx={{ objectFit: "cover" }}
         />
         <CardContent sx={{ height: "calc(100% - 208px)" }}>
           <Grid
