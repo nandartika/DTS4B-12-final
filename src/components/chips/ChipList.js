@@ -1,5 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Grid } from "@mui/material";
 import ChipItem from "./ChipItem";
 
 const categories = [
