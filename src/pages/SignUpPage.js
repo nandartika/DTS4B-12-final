@@ -8,18 +8,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/layouts/Layout";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { auth } from "../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpPage = () => {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get("email");
+    const pass = data.get("password");
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, pass);
+      navigate("/");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
