@@ -2,9 +2,11 @@ import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const MainNavigation = () => {
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
 
   const handleLogout = async () => {
     try {
@@ -37,9 +39,11 @@ const MainNavigation = () => {
           >
             Laskar News
           </Typography>
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
+          {user && (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -4,9 +4,10 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+const FIREBASE_KEY = process.env.REACT_APP_FIREBASE_KEY
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD--YdVrtgr01_NL_rsdZjPstzfcLwkQFc",
+  apiKey: FIREBASE_KEY,
   authDomain: "laskar-news.firebaseapp.com",
   projectId: "laskar-news",
   storageBucket: "laskar-news.appspot.com",

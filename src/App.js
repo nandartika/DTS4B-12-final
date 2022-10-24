@@ -9,14 +9,43 @@ import MainPage from "./pages/MainPage";
 import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import ProtectedRoute from "./components/layouts/ProtectecRoute";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/:idNews" element={<DetailPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <MainPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/:idNews"
+        element={
+          <ProtectedRoute>
+            <DetailPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <ProtectedRoute>
+            <LoginPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <ProtectedRoute>
+            <SignUpPage />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
