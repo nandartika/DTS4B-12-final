@@ -16,26 +16,22 @@ export const newsApi = createApi({
   endpoints: (builder) => ({
     getTopNews: builder.query({
       query: () => ({
-        url: "trendingtopics",
+        url: "/",
         params: {
-          mkt: "en-US",
-          textFormat: "Raw",
           safeSearch: "Off",
-          count: "1",
+          textFormat: "Raw",
         },
       }),
       transformResponse: (response) => {
-        return response.value
-          ? { keyword: response.value[0].name }
-          : { error: response.message };
+        return response ? response.value[0] : { error: response.message };
       },
     }),
     getLastestNews: builder.query({
-      query: () => ({
+      query: ({ category }) => ({
         url: "/",
         params: {
           count: "8",
-          category: "ScienceAndTechnology",
+          category: category,
           mkt: "en-US",
           safeSearch: "Off",
           textFormat: "Raw",

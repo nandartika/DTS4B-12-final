@@ -5,23 +5,19 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import { useGetSearchNewsQuery } from "../../services/newsApi";
+import { useGetTopNewsQuery } from "../../services/newsApi";
 import imgPlaceholder from "../../assets/images/img-placeholder.jpeg";
 import timeSince from "../../utils/timeSince";
 import { useNavigate } from "react-router-dom";
 
 const HotTopicsSection = () => {
   const navigate = useNavigate();
-  const { data } = useGetSearchNewsQuery({
-    keyword: "top stories",
-    singel: true,
-  });
+  const { data } = useGetTopNewsQuery();
 
-  const hotNewsData = data && data.value[0];
-  const image = hotNewsData && hotNewsData.image.thumbnail.contentUrl;
-  const title = hotNewsData && hotNewsData.name;
-  const date = hotNewsData && hotNewsData.datePublished;
-  const description = hotNewsData && hotNewsData.description;
+  const image = data?.image?.thumbnail?.contentUrl;
+  const title = data?.name;
+  const date = data?.datePublished;
+  const description = data?.description;
 
   const handlerClick = () => {
     navigate(`/${title}`);

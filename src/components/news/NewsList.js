@@ -13,10 +13,10 @@ const NewsList = (props) => {
       {props.data.map((item, index) => (
         <Grid item key={index}>
           <NewsItem
-            image={item.image && item.image.thumbnail.contentUrl}
-            title={item.name}
-            date={item.datePublished}
-            publisher={item.provider[0].name}
+            image={item?.image?.thumbnail?.contentUrl}
+            title={item?.name}
+            date={item?.datePublished}
+            publisher={item?.provider[0]?.name}
           />
         </Grid>
       ))}
