@@ -8,13 +8,44 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import ProtectedRoute from "./components/layouts/ProtectecRoute";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/:idNews" element={<DetailPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <MainPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/:idNews"
+        element={
+          <ProtectedRoute>
+            <DetailPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <ProtectedRoute loginOnly={false}>
+            <LoginPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <ProtectedRoute loginOnly={false}>
+            <SignUpPage />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
