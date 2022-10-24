@@ -29,8 +29,8 @@ const ChipList = () => {
       // wrap="nowrap"
     >
       {categories.map((item, index) => (
-        <Grid item>
-          <ChipItem key={index} label={item} />
+        <Grid item key={index}>
+          <ChipItem label={item} />
         </Grid>
       ))}
     </Grid>
