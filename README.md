@@ -1,19 +1,10 @@
-# DTS REA4 Final Project
+# Video Dokumentasi
+![demo](public/laskarnews.gif)
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+# Link Live App
+https://laskarnews.netlify.app/
 
-## Daftar pair
+# Detail Project
+Laskar News is a website-based application that displays trending news and the latest news collections. Laskar News displays a list of the latest news by category, the category can be selected on the existing chips.
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
-
-## Fork and Clone
-
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+On the Laskar News detail page displays some details of the news and can refer to the page that created the news.
